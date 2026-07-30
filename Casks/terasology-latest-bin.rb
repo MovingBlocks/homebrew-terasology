@@ -15,7 +15,7 @@ cask "terasology-latest-bin" do
   depends_on formula: "openjdk"
 
   preflight do
-    bundle = "#{staged_path}/Terasology.app"
+    bundle = "#{staged_path}/Terasology Latest.app"
     contents = "#{bundle}/Contents"
     macos_dir = "#{contents}/MacOS"
     resources = "#{contents}/Resources"
@@ -27,7 +27,7 @@ cask "terasology-latest-bin" do
     # Contents/* layout, then wrap it as a real .app for Launchpad/Dock/Spotlight.
     FileUtils.mkdir_p game_dir
     Dir.children(staged_path).each do |entry|
-      next if entry == "Terasology.app"
+      next if entry == "Terasology Latest.app"
 
       FileUtils.mv "#{staged_path}/#{entry}", "#{game_dir}/#{entry}"
     end
@@ -49,9 +49,9 @@ cask "terasology-latest-bin" do
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
       <plist version="1.0">
       <dict>
-        <key>CFBundleName</key><string>Terasology</string>
-        <key>CFBundleDisplayName</key><string>Terasology</string>
-        <key>CFBundleIdentifier</key><string>org.terasology.game</string>
+        <key>CFBundleName</key><string>Terasology Latest</string>
+        <key>CFBundleDisplayName</key><string>Terasology Latest</string>
+        <key>CFBundleIdentifier</key><string>org.terasology.game.latest</string>
         <key>CFBundleVersion</key><string>#{version}</string>
         <key>CFBundleShortVersionString</key><string>#{version}</string>
         <key>CFBundlePackageType</key><string>APPL</string>
@@ -86,8 +86,8 @@ cask "terasology-latest-bin" do
     FileUtils.chmod 0755, "#{macos_dir}/terasology-latest-bin"
   end
 
-  app "Terasology.app"
-  binary "#{appdir}/Terasology.app/Contents/MacOS/terasology-latest-bin"
+  app "Terasology Latest.app"
+  binary "#{appdir}/Terasology Latest.app/Contents/MacOS/terasology-latest-bin"
 
   zap trash: "~/.terasology"
 end
