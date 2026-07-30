@@ -1,5 +1,5 @@
 cask "terasology-latest-bin" do
-  version "5.4.0"
+  version :latest
   sha256 :no_check
 
   url "https://jenkins.terasology.io/job/Terasology/job/Omega/job/develop/lastSuccessfulBuild/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
