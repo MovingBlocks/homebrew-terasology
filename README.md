@@ -10,6 +10,9 @@ brew install terasology-latest-bin
 terasology-latest-bin
 ```
 
+On Homebrew versions with tap trust enforcement, the first install may ask you to run
+`brew trust soloturn/terasology` before it'll load anything from a new third-party tap.
+
 ## What this installs
 
 `terasology-latest-bin` is a [Cask](https://docs.brew.sh/Cask-Cookbook) that downloads the latest
