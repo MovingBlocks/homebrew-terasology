@@ -5,7 +5,7 @@ Homebrew tap for [Terasology](https://terasology.org), a voxel-based game engine
 ## Install
 
 ```sh
-brew tap soloturn/terasology
+brew tap MovingBlocks/terasology
 brew install terasology            # pinned, stable release (currently v5.4.0-rc.1)
 brew install terasology-latest-bin # rolling latest CI build from develop
 ```
@@ -16,7 +16,7 @@ Spotlight, or Finder) plus a matching terminal command (`terasology` / `terasolo
 Both run the exact same game either way, just from different sources.
 
 On Homebrew versions with tap trust enforcement, the first install may ask you to run
-`brew trust soloturn/terasology` before it'll load anything from a new third-party tap.
+`brew trust MovingBlocks/terasology` before it'll load anything from a new third-party tap.
 
 ## What these install
 
