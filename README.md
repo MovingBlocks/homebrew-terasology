@@ -44,7 +44,12 @@ to its own resolved location before its relative `-jar libs/Terasology.jar`, so 
 launch (working directory unpredictable) would fail even though a `./Terasology` from a terminal in
 the right directory happens to work.
 
-Requires a JDK, installed automatically via the `openjdk` formula dependency.
+Requires a JDK, installed automatically via the `openjdk@17` formula dependency - pinned to 17
+specifically, not the generic (latest) `openjdk` formula. Terasology's module sandbox depends on
+`SecurityManager`, which is disabled by default starting JDK 18 and removed entirely on JDK 24+
+(JEP 486); only JDK 17 gets a working sandbox with no extra JVM flags needed. See
+[MovingBlocks/Terasology#5357](https://github.com/MovingBlocks/Terasology/issues/5357) for the
+full architecture discussion.
 
 ## Updating
 

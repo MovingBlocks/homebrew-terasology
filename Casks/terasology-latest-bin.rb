@@ -12,7 +12,11 @@ cask "terasology-latest-bin" do
     regex(/Build number:\s*(\d+)/i)
   end
 
-  depends_on formula: "openjdk"
+  # Pinned to 17 specifically, not the generic "openjdk" (latest) formula: Terasology's module
+  # sandbox depends on SecurityManager, which is disabled by default starting JDK 18 and removed
+  # entirely by JEP 486 on JDK 24+ - only JDK 17 gets a working sandbox with no extra JVM flags.
+  # See https://github.com/MovingBlocks/Terasology/issues/5357 for the architecture discussion.
+  depends_on formula: "openjdk@17"
 
   preflight do
     bundle = "#{staged_path}/Terasology Latest.app"
@@ -81,7 +85,7 @@ cask "terasology-latest-bin" do
       done
       HERE="$(cd -P "$(dirname "$SELF")" && pwd)"
       cd "$HERE/../Resources/game" || exit 1
-      exec "#{HOMEBREW_PREFIX}/opt/openjdk/bin/java" -jar libs/Terasology.jar "$@"
+      exec "#{HOMEBREW_PREFIX}/opt/openjdk@17/bin/java" -jar libs/Terasology.jar "$@"
     SH
     FileUtils.chmod 0755, "#{macos_dir}/terasology-latest-bin"
   end
